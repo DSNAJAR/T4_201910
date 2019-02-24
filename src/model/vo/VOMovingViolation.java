@@ -1,19 +1,118 @@
 package model.vo;
 
+import java.util.Date;
+
 /**
  * Representation of a MovingViolation object
  */
 public class VOMovingViolation implements Comparable<VOMovingViolation> {
 
 	// TODO Definir los atributos de una infraccion
+	/**
+	 * Identificador único de la infracción
+	 */
+	private int objectId;
 	
-
+	/**
+	 * Dirección en formato de texto
+	 */
+	private String rowLocation;
+	
+	/**
+	 * ID de la dirección
+	 */
+	private int addresId;
+	
+	/**
+	 * ID del segmento de la calle
+	 */
+	private int streetSegId;
+	
+	/**
+	 * Coordenada X donde ocurrió (No corresponde a una longitud geográfica)
+	 */
+	private int xCoord;
+	
+	/**
+	 * Coordenada y donde ocurrió (No corresponde a una longitud geográfica)
+	 */
+	private int yCoord;
+	
+	/**
+	 * Tipo de infracción
+	 */
+	private String ticketType;
+	
+	/**
+	 * Cantidad a pagar por la infracción en USD
+	 */
+	private int fineAMT;
+	
+	/**
+	 * Cuanto dinero pagó el que recibió la multa
+	 */
+	private int totalPaid;
+	
+	/**
+	 * Dinero extra que debe pagar el conductor
+	 */
+	private int penal1;
+	
+	/**
+	 * Dinero extra que debe pagar el conductor
+	 */
+	private int penal2;
+	
+	/**
+	 * Indicador de accidente
+	 */
+	private String accidentIndicator;
+	
+	/**
+	 * Numero de la agencia
+	 */
+	private int agencyId;
+	
+	/**
+	 * Fecha cuando se puso la infracción
+	 */
+	private Date ticketIssueDate;
+	
+	/**
+	 * Código de la infracción
+	 */
+	private int violationCode;
+	
+	/**
+	 * Descripción textual de la infracción
+	 */
+	private String violationDesc;
+	
+	private int rowId;
+	
 	/**
 	 * Metodo constructor
 	 */
 	public VOMovingViolation(  )
 	{
 		// TODO Implementar
+		objectId = 0;
+		rowLocation = "";
+		addresId = 0;
+		streetSegId = 0;
+		xCoord = 0;
+		yCoord = 0;
+		ticketType = "";
+		fineAMT = 0;
+		totalPaid = 0;
+		penal1 = 0;
+		penal2 = 0;
+		accidentIndicator =  "";
+		agencyId = 0;
+		ticketIssueDate = new Date();
+		violationCode = 0;
+		violationDesc = "";
+		rowId = 0;
 	}	
 	
 	/**
@@ -21,7 +120,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 */
 	public int objectId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return objectId;
 	}	
 	
 	
@@ -30,7 +129,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 */
 	public String getLocation() {
 		// TODO Auto-generated method stub
-		return "";
+		return rowLocation;
 	}
 
 	/**
@@ -38,7 +137,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 */
 	public String getTicketIssueDate() {
 		// TODO Auto-generated method stub
-		return "";
+		return ticketIssueDate.toString();
 	}
 	
 	/**
@@ -46,7 +145,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 */
 	public int getTotalPaid() {
 		// TODO Auto-generated method stub
-		return 0;
+		return totalPaid;
 	}
 	
 	/**
@@ -54,7 +153,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 */
 	public String  getAccidentIndicator() {
 		// TODO Auto-generated method stub
-		return "";
+		return accidentIndicator;
 	}
 		
 	/**
@@ -62,7 +161,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 */
 	public String  getViolationDescription() {
 		// TODO Auto-generated method stub
-		return "";
+		return violationDesc;
 	}
 
 	@Override

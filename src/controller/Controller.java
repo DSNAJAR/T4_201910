@@ -33,8 +33,9 @@ public class Controller {
 	 */
 	public int loadMovingViolations() {
 		// TODO Los datos de los archivos deben guardarse en la Estructura de Datos definida
+		int numInf = 0;
 		
-		return 0;
+		return numInf;
 	}
 	
 	/**
