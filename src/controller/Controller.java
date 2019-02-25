@@ -82,7 +82,7 @@ public class Controller {
 	 */
 	public void ordenarMergeSort( Comparable<VOMovingViolation>[ ] datos ) {
 
-		Sort.ordenarMergeSort(datos);
+		Sort.ordenarMergeSort(datos, muestraCopia);
 	}
 
 	/**
