@@ -1,8 +1,13 @@
 package model.vo;
 
+<<<<<<< HEAD
 import java.text.ParseException;
+=======
+>>>>>>> db32e81eaac0d775d2cd0270f443f66f7ef43c96
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 /**
  * Representation of a MovingViolation object
@@ -33,12 +38,12 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	/**
 	 * Coordenada X donde ocurrió (No corresponde a una longitud geográfica)
 	 */
-	private int xCoord;
+	private double xCoord;
 	
 	/**
 	 * Coordenada y donde ocurrió (No corresponde a una longitud geográfica)
 	 */
-	private int yCoord;
+	private double yCoord;
 	
 	/**
 	 * Tipo de infracción
@@ -126,7 +131,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	/**
 	 * @return id - Identificador unico de la infraccion
 	 */
-	public int objectId() {
+	public int getObjectId() {
 		// TODO Auto-generated method stub
 		return objectId;
 	}	
@@ -139,13 +144,47 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 		// TODO Auto-generated method stub
 		return rowLocation;
 	}
-
+	
 	/**
-	 * @return date - Fecha cuando se puso la infraccion .
+	 * @return address - ID de la dirección
 	 */
-	public String getTicketIssueDate() {
-		// TODO Auto-generated method stub
-		return ticketIssueDate.toString();
+	public int getAdressId(){
+		return addresId;
+	}
+	
+	/**
+	 * @return street seg Id - ID del segmento de la calle
+	 */
+	public int getStreetSegId(){
+		return streetSegId;
+	}
+	
+	/**
+	 * @return coordX - Coordenada x donde ocurrió
+	 */
+	public double getXCoord(){
+		return xCoord;
+	}
+	
+	/**
+	 * @return coordY - Coordenada y donde ocurrió
+	 */
+	public double getYCoord(){
+		return yCoord;
+	}
+	
+	/**
+	 *@return ticket type - Tipo de infracción 
+	 */
+	public String getTicketType(){
+		return ticketType;
+	}
+	
+	/**
+	 * @return fine AMT - Cantidad a pagar por la infracción en USD
+	 */
+	public int getFineAMT(){
+		return fineAMT;
 	}
 	
 	/**
@@ -155,6 +194,19 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 		// TODO Auto-generated method stub
 		return totalPaid;
 	}
+	/**
+	 * @return penal 1 - Dinero extra que debe pagar el conductor
+	 */
+	public int getPenalty1(){
+		return penal1;
+	}
+	
+	/**
+	 * @return penal 2 - Dinero extra que debe pagar el conductor
+	 */
+	public int getPenalty2(){
+		return penal2;
+	}
 	
 	/**
 	 * @return accidentIndicator - Si hubo un accidente o no.
@@ -162,6 +214,28 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	public String  getAccidentIndicator() {
 		// TODO Auto-generated method stub
 		return accidentIndicator;
+	}
+	
+	/**
+	 * @return agency ID - ID de la agencia
+	 */
+	public int getAgencyId(){
+		return agencyId;
+	}
+	
+	/**
+	 * @return date - Fecha cuando se puso la infraccion .
+	 */
+	public String getTicketIssueDate() {
+		// TODO Auto-generated method stub
+		return ticketIssueDate.toString();
+	}
+	
+	/**
+	 * @return violation code - Código de la infracción
+	 */
+	public int getViolationCode(){
+		return violationCode;
 	}
 		
 	/**
@@ -171,11 +245,39 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 		// TODO Auto-generated method stub
 		return violationDesc;
 	}
+	
+	/**
+	 * @return rowID
+	 */
+	public int getRowId(){
+		return rowId;
+	}
 
 	@Override
+	/**
+	 * Compara las infracciones por el ticketIssueDate. Si el ticketIssueDate de las infracciones comparadas es 
+	 * igual, la comparación se resuelve por su objectID.
+	 * @return 1 si la infracción es mayor que la recibida
+	 * @return 0 si las infracciones son iguales
+	 * @return -1 si la infracción es menor que la recibida 
+	 */
 	public int compareTo(VOMovingViolation o) {
 		// TODO implementar la comparacion "natural" de la clase
-		return 0;
+		int c = 0;
+		SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd"+" T "+"kk:mm:ss");
+		Date n = null;
+		try{
+			n = form.parse(o.getTicketIssueDate());
+		} catch (ParseException | java.text.ParseException ex){
+			ex.printStackTrace();
+		}
+		if(ticketIssueDate.after(n)) c = 1;
+		else if(ticketIssueDate.before(n)) c = -1;
+		else if(ticketIssueDate.equals(n)){
+			if (objectId < o.getObjectId()) c = -1;
+			else if(objectId > o.getObjectId()) c= 1;
+			else return c;};
+		return c;
 	}
 	
 	public String toString()
