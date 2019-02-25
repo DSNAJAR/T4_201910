@@ -3,6 +3,7 @@ package controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.text.ParseException;
 import java.util.Scanner;
 import model.data_structures.*;
 import model.util.Sort;
@@ -62,8 +63,10 @@ public class Controller {
 	 * Todas infracciones (MovingViolation) deben almacenarse en una Estructura de Datos (en el mismo orden como estan los archivos)
 	 * A partir de estos datos se obtendran muestras para evaluar los algoritmos de ordenamiento
 	 * @return numero de infracciones leidas 
+	 * @throws ParseException 
+	 * @throws NumberFormatException 
 	 */
-	public int loadMovingViolations() {
+	public int loadMovingViolations() throws Exception {
 		// TODO Los datos de los archivos deben guardarse en la Estructura de Datos definida
 		int numInf = 0;
 		boolean finish = false;
@@ -114,8 +117,8 @@ public class Controller {
 				String violationDescription = mv[15].trim();
 				String rowId = mv[16].trim();
 				
-				movingViolationsQueue.enqueue(new VOMovingViolation(Integer.parseInt(objectId), location, Integer.parseInt(addressId), Integer.parseInt(streetsegId), Integer.parseInt(xCoord), Integer.parseInt(yCoord), ticketType, Integer.parseInt(fineAMT), Integer.parseInt(totalPaid), Integer.parseInt(penalty1), Integer.parseInt(penalty2), accidentIndicator, pAgencyId, ticketIssueDate, Integer.parseInt(violationCode), violationDescription, Integer.parseInt(rowId)));
-				movingViolationsStack.push(new VOMovingViolation(Integer.parseInt(objectId), location, Integer.parseInt(addressId), Integer.parseInt(streetsegId), Integer.parseInt(xCoord), Integer.parseInt(yCoord), ticketType, Integer.parseInt(fineAMT), Integer.parseInt(totalPaid), Integer.parseInt(penalty1), Integer.parseInt(penalty2), accidentIndicator, pAgencyId, ticketIssueDate, Integer.parseInt(violationCode), violationDescription, Integer.parseInt(rowId));
+				movingViolationsQueue.enqueue(new VOMovingViolation(Integer.parseInt(objectId), location, Integer.parseInt(addressId), Integer.parseInt(streetsegId), Integer.parseInt(xCoord), Integer.parseInt(yCoord), ticketType, Integer.parseInt(fineAMT), Integer.parseInt(totalPaid), Integer.parseInt(penalty1), Integer.parseInt(penalty2), accidentIndicator, ticketIssueDate, Integer.parseInt(violationCode), violationDescription, Integer.parseInt(rowId)));
+				movingViolationsStack.push(new VOMovingViolation(Integer.parseInt(objectId), location, Integer.parseInt(addressId), Integer.parseInt(streetsegId), Integer.parseInt(xCoord), Integer.parseInt(yCoord), ticketType, Integer.parseInt(fineAMT), Integer.parseInt(totalPaid), Integer.parseInt(penalty1), Integer.parseInt(penalty2), accidentIndicator, ticketIssueDate, Integer.parseInt(violationCode), violationDescription, Integer.parseInt(rowId)));
 				
 			}
 			if(finish == true)
@@ -196,7 +199,7 @@ public class Controller {
 		// TODO implementar
 	}
 	
-	public void run() {
+	public void run() throws Exception {
 		long startTime;
 		long endTime;
 		long duration;

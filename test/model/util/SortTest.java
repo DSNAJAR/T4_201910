@@ -15,6 +15,7 @@ public class SortTest {
 	@Before
 	public void setUp() throws Exception{
 		System.out.println("Codigo de configuracion de muestra de datos a probar");
+		datos[0] = "datos 1";
 	}
 
 	@Test

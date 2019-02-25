@@ -101,7 +101,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 * Metodo constructor
 	 * @throws ParseException 
 	 */
-	public VOMovingViolation( int pObjectId, String pLocation, int pAddrresId, int pStreetSegId,int pXCoord, int pYCoord, String pTicketType, int pSumaFINEAMT, int pTotalPaid, int pPenal1, int pPenal2, String pAccidentIndicator, int pAgencyId, String pTicketIssueDate, int pViolationCode, String pViolationDescription, int pRowId) throws ParseException
+	public VOMovingViolation( int pObjectId, String pLocation, int pAddrresId, int pStreetSegId,int pXCoord, int pYCoord, String pTicketType, int pSumaFINEAMT, int pTotalPaid, int pPenal1, int pPenal2, String pAccidentIndicator, String pTicketIssueDate, int pViolationCode, String pViolationDescription, int pRowId) throws ParseException
 	{
 		// TODO Implementar
 		objectId = pObjectId;
@@ -116,7 +116,7 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 		penal1 = pPenal1;
 		penal2 = pPenal2;
 		accidentIndicator =  pAccidentIndicator;
-		agencyId = pAgencyId;
+		agencyId = 0;
 		ticketIssueDate = format.parse(pTicketIssueDate);
 		violationCode = pViolationCode;
 		violationDesc = pViolationDescription;
