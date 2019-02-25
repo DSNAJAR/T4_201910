@@ -1,5 +1,9 @@
 package model.vo;
 
+<<<<<<< HEAD
+import java.text.ParseException;
+=======
+>>>>>>> db32e81eaac0d775d2cd0270f443f66f7ef43c96
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -94,28 +98,34 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	private int rowId;
 	
 	/**
-	 * Metodo constructor
+	 * Es el formato que se usara para las fechas
 	 */
-	public VOMovingViolation(  )
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+	
+	/**
+	 * Metodo constructor
+	 * @throws ParseException 
+	 */
+	public VOMovingViolation( int pObjectId, String pLocation, int pAddrresId, int pStreetSegId,int pXCoord, int pYCoord, String pTicketType, int pSumaFINEAMT, int pTotalPaid, int pPenal1, int pPenal2, String pAccidentIndicator, String pTicketIssueDate, int pViolationCode, String pViolationDescription, int pRowId) throws ParseException
 	{
 		// TODO Implementar
-		objectId = 0;
-		rowLocation = "";
-		addresId = 0;
-		streetSegId = 0;
-		xCoord = 0;
-		yCoord = 0;
-		ticketType = "";
-		fineAMT = 0;
-		totalPaid = 0;
-		penal1 = 0;
-		penal2 = 0;
-		accidentIndicator =  "";
+		objectId = pObjectId;
+		rowLocation = pLocation;
+		addresId = pAddrresId;
+		streetSegId = pStreetSegId;
+		xCoord = pXCoord;
+		yCoord = pYCoord;
+		ticketType = pTicketType;
+		fineAMT = pSumaFINEAMT;
+		totalPaid = pTotalPaid;
+		penal1 = pPenal1;
+		penal2 = pPenal2;
+		accidentIndicator =  pAccidentIndicator;
 		agencyId = 0;
-		ticketIssueDate = new Date();
-		violationCode = 0;
-		violationDesc = "";
-		rowId = 0;
+		ticketIssueDate = format.parse(pTicketIssueDate);
+		violationCode = pViolationCode;
+		violationDesc = pViolationDescription;
+		rowId = pRowId;
 	}	
 	
 	/**
